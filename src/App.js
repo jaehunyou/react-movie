@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
+
+import Detail from "./routes/Detail";
+import Home from "./routes/Home";
 
 function App() {
+  // Route는 URL중 페이지를 넘겼을 때 더 붙는 코드를 이야기한다. localhost:3000/(~~~~)
+  // path 에 / 만 붙이면 home page으로 이동한다.
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // react-router-dom@6 을 썼고 Switch(v5) 대신 Routes와 element을 사용
+    <Router>
+      <Routes>
+        <Route path="/movie/:id" element={<Detail />} />
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </Router>
   );
 }
 
